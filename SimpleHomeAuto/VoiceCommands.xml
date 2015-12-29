@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
+  
+  <CommandSet xml:lang="fr-fr" Name="HomeCommandSet_fr-fr">
+    
+    <AppName> Maison </AppName>
+    <Example> lance [scenario] </Example>
+
+    <Command Name="launchScenario">
+      <Example> lance [scenario] </Example>
+      <ListenFor> lance {scenario} </ListenFor>
+      <Feedback> Lancement {scenario} </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="scenarioScenario">
+      <Example> scenario [scenario] </Example>
+      <ListenFor> scenario {scenario} </ListenFor>
+      <Feedback> Lancement {scenario} </Feedback>
+      <Navigate/>
+    </Command>
+
+    <PhraseList Label="scenario">
+
+    </PhraseList>
+    
+  </CommandSet>
+
+  <CommandSet xml:lang="en-us" Name="HomeCommandSet_en-us">
+
+    <AppName> House </AppName>
+    <Example> launch [scenario] </Example>
+
+    <Command Name="launchScenario">
+      <Example> launch [scenario] </Example>
+      <ListenFor> launch {scenario} </ListenFor>
+      <Feedback> Launching {scenario} </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="scenarioScenario">
+      <Example> scenario [scenario] </Example>
+      <ListenFor> scenario {scenario} </ListenFor>
+      <Feedback> Launching {scenario} </Feedback>
+      <Navigate/>
+    </Command>
+
+    <PhraseList Label="scenario">
+
+    </PhraseList>
+
+  </CommandSet>
+
+</VoiceCommands>

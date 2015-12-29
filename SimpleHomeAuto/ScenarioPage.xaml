@@ -1,0 +1,56 @@
+﻿<Page
+    x:Class="SimpleHomeAuto.ScenarioPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SimpleHomeAuto"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource SystemControlBackgroundAccentBrush}"
+    mc:Ignorable="d" Loaded="OnLoaded">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="18,2,12,0" Height="70" 
+                        RequestedTheme="Dark" Grid.Row="0">
+            <TextBlock x:Uid="ScenarioPageTitle" Text="[EN] SCENARIO DETAIL" VerticalAlignment="Center" FontSize="25" />
+        </Border>
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <StackPanel Margin="20">
+                <TextBox x:Uid="ScenarioTitle" x:Name="Title" PlaceholderText="[en] scenario" Header="[EN] Title" Text="{Binding Title, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Margin="20,0,20,20">
+                <TextBox x:Uid="ScnenarioVoice" x:Name="VoiceCommand" PlaceholderText="[en] open garage" Header="[en] Voice Command" Text="{Binding VoiceCommand, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Margin="20,0,20,20">
+                <TextBox x:Uid="ScenarioUrl" x:Name="Url" PlaceholderText="http://home/action" Header="[en] Url to call" Text="{Binding Url, Mode=TwoWay}" />
+            </StackPanel>
+            <StackPanel Margin="20,0,20,20">
+                <ToggleSwitch x:Uid="ScenarioPintoStart" x:Name="PinToStart" Header="[en] Pin to start" Toggled="OnPinToStart"></ToggleSwitch>
+            </StackPanel>
+            <StackPanel x:Name="ViewLaunch" Margin="20,0,20,20">
+                <Button x:Uid="ScenarioLaunch" x:Name="Launch" Padding="10" HorizontalAlignment="Stretch" 
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="White"
+                        Click="OnLaunch">[EN] Launch</Button>
+            </StackPanel>
+            <Grid Margin="20,0,20,20" x:Name="SaveGrid" Visibility="Visible">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button x:Uid="ScenarioSave" Grid.Column="0" Padding="10" HorizontalAlignment="Stretch" 
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="White"
+                        Margin="0,0,10,0"
+                        Click="OnSave">[EN] Save</Button>
+
+                <Button x:Uid="ScenarioCancel" Grid.Column="1" Padding="10" HorizontalAlignment="Stretch" 
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="White"
+                        Margin="10,0,0,0"
+                        Click="OnCancel">[EN] Cancel</Button>
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Page>

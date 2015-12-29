@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="SimpleHomeAuto.ActionPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SimpleHomeAuto"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Loaded="OnLoaded">
+
+    <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}">
+        <StackPanel Margin="20" Orientation="Vertical">
+            <Image x:Name="image" Margin="20" Source="Assets/SplashScreen.png" Tapped="OnTapped" />
+            <ProgressRing x:Name="Working"
+                          HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                          IsActive="true" Height="100" Foreground="White"></ProgressRing>
+            <StackPanel>
+                <TextBlock x:Name="Results" Foreground="White" Text="" HorizontalAlignment="Center" FontSize="48"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
