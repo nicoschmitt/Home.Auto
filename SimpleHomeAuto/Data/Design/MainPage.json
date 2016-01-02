@@ -1,0 +1,13 @@
+﻿{
+  "Version":  "v1.0.0",
+  "Scenarios": [
+    {
+      "Title": "Garage",
+      "Url": "http://home/garage"
+    },
+    {
+      "Title": "Light",
+      "Url": "http://home/light"
+    }
+  ]
+}

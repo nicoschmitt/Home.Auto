@@ -6,34 +6,48 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:uwp="using:Universal.UI.Xaml.Controls"
+    xmlns:sample="using:SimpleHomeAuto.Data.Design"
     Background="{ThemeResource SystemControlBackgroundAccentBrush}"
-    mc:Ignorable="d" Loaded="OnLoaded">
-
+    mc:Ignorable="d" d:DataContext="{d:DesignData Source=/Data/Design/MainPage.json, Type=sample:MainPageDesign}"
+    Loaded="OnLoaded">
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
-            <RowDefinition Height="70" />
+            <RowDefinition Height="80" />
             <RowDefinition Height="*" />
             <RowDefinition Height="80" />
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
-        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="5,2,12,0" Height="70" 
+        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="5,2,0,0" Height="80" 
                     Grid.Row="0" RequestedTheme="Dark" >
-            <StackPanel Orientation="Horizontal">
-                <Image Source="Assets/Square150x150Logo.png" NineGrid="0,0,10,0" />
-                <StackPanel VerticalAlignment="Center" Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="75" />
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="/Assets/Square150x150Logo.png" NineGrid="0,0,10,0" />
+                <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Vertical">
                     <TextBlock Text="HOME AUTO" VerticalAlignment="Center" FontSize="25" />
-                    <TextBlock x:Name="Version" VerticalAlignment="Center" FontSize="15" />
+                    <TextBlock x:Name="Version" Text="v1.0.0" VerticalAlignment="Center" FontSize="15" />
                 </StackPanel>
-            </StackPanel>
+                <Button Grid.Column="2" HorizontalAlignment="Right" Background="Transparent" Margin="0,0,9,0" Click="OnInfo">
+                    <Button.Content>
+                        <Path Width="38" Height="38" Canvas.Left="19" Canvas.Top="19" Stretch="Fill" Fill="White" 
+                              Data="F1 M 38,19C 48.4934,19 57,27.5066 57,38C 57,48.4934 48.4934,57 38,57C 27.5066,57 19,48.4934 19,38C 19,27.5066 27.5066,19 38,19 Z M 33.25,33.25L 33.25,36.4167L 36.4166,36.4167L 36.4166,47.5L 33.25,47.5L 33.25,50.6667L 44.3333,50.6667L 44.3333,47.5L 41.1666,47.5L 41.1666,36.4167L 41.1666,33.25L 33.25,33.25 Z M 38.7917,25.3333C 37.48,25.3333 36.4167,26.3967 36.4167,27.7083C 36.4167,29.02 37.48,30.0833 38.7917,30.0833C 40.1033,30.0833 41.1667,29.02 41.1667,27.7083C 41.1667,26.3967 40.1033,25.3333 38.7917,25.3333 Z "/>
+                    </Button.Content>
+                </Button>
+            </Grid>
         </Border>
         <uwp:SwipeListView x:Name="ListScenarios"
-                               Grid.Row="1"
-                               ItemRightBackground="#B6222A"
-                               ItemLeftBehavior="Disabled"
-                               IsItemClickEnabled="True"
-                               ItemClick="OnClick"
-                               ItemSwipe="OnSwipe"
-                               SelectionMode="None">
+                           ItemsSource="{Binding Scenarios}"
+                           Grid.Row="1"
+                           ItemRightBackground="#B6222A"
+                           ItemLeftBehavior="Disabled"
+                           IsItemClickEnabled="True"
+                           ItemClick="OnClick"
+                           ItemSwipe="OnSwipe"
+                           SelectionMode="None">
             <uwp:SwipeListView.ItemRightContentTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
@@ -52,13 +66,17 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="45" />
+                                </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="{Binding Title}"
                                            FontSize="18" 
                                            Style="{ThemeResource SubtitleTextBlockStyle}"
                                            TextWrapping="NoWrap" 
                                            TextTrimming="CharacterEllipsis" 
-                                           Grid.Row="0"/>
+                                           Grid.Row="0" Grid.Column="0"/>
 
                                 <TextBlock Text="{Binding Url}" 
                                            FontSize="13" 
@@ -66,8 +84,17 @@
                                            TextWrapping="NoWrap" 
                                            TextTrimming="CharacterEllipsis"
                                            Style="{ThemeResource BodyTextBlockStyle}" 
-                                           Grid.Row="1"/>
+                                           Grid.Row="1" Grid.Column="0"/>
 
+                                <Button Grid.Column="1" Grid.RowSpan="2" 
+                                        Background="Transparent" HorizontalAlignment="Right"
+                                        Click="OnLaunched">
+                                    <Button.Content>
+                                        <Path Width="20.5832" Height="31.6667" Canvas.Left="30.0833" Canvas.Top="22.1667" Stretch="Fill" 
+                                                  Fill="{ThemeResource SystemControlBackgroundAccentBrush}" 
+                                                  Data="F1 M 30.0833,22.1667L 50.6665,37.6043L 50.6665,38.7918L 30.0833,53.8333L 30.0833,22.1667 Z "/>
+                                    </Button.Content>
+                                </Button>
                             </Grid>
                         </Border>
                     </Border>

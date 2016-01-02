@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="18,2,12,0" Height="70" 
+        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="18,2,12,0" Height="80" 
                         RequestedTheme="Dark" Grid.Row="0">
             <TextBlock x:Uid="ScenarioPageTitle" Text="[EN] SCENARIO DETAIL" VerticalAlignment="Center" FontSize="25" />
         </Border>

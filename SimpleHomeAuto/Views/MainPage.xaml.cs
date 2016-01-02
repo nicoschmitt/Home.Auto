@@ -1,6 +1,8 @@
 ﻿using SimpleHomeAuto.Data;
+using SimpleHomeAuto.Views;
 using SimpleHomeAuto.Voice;
 using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Windows.Foundation;
 using Windows.UI.StartScreen;
@@ -22,9 +24,9 @@ namespace SimpleHomeAuto
         {
             var context = Context.Instance;
             context.LoadSettings();
-
-            Version.Text = context.Version;
             ListScenarios.ItemsSource = context.Scenarios;
+
+            Version.Text = Context.Instance.Version;
 
             try
             {
@@ -61,6 +63,20 @@ namespace SimpleHomeAuto
         private void OnAddScenario(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             Frame.Navigate(typeof(ScenarioPage), null);
+        }
+
+        private void OnLaunched(object sender, RoutedEventArgs e)
+        {
+            var item = (sender as Button).DataContext as Scenario;
+            if (item != null)
+            {
+                Frame.Navigate(typeof(ActionPage), item);
+            }
+        }
+
+        private void OnInfo(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(InfoPage));
         }
     }
 }

@@ -9,7 +9,7 @@
 
     <Grid Background="{ThemeResource SystemControlBackgroundAccentBrush}">
         <StackPanel Margin="20" Orientation="Vertical">
-            <Image x:Name="image" Margin="20" Source="Assets/SplashScreen.png" Tapped="OnTapped" />
+            <Image x:Name="image" Margin="20" Source="/Assets/SplashScreen.png" Tapped="OnTapped" />
             <ProgressRing x:Name="Working"
                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
                           IsActive="true" Height="100" Foreground="White"></ProgressRing>

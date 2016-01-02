@@ -9,7 +9,9 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI;
 using Windows.UI.Core;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -20,15 +22,8 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SimpleHomeAuto
 {
-    /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
-    /// </summary>
     sealed partial class App : Application
     {
-        /// <summary>
-        /// Initializes the singleton application object.  This is the first line of authored code
-        /// executed, and as such is the logical equivalent of main() or WinMain().
-        /// </summary>
         public App()
         {
             Microsoft.ApplicationInsights.WindowsAppInitializer.InitializeAsync(
@@ -66,14 +61,6 @@ namespace SimpleHomeAuto
 
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-
-#if DEBUG
-            //if (System.Diagnostics.Debugger.IsAttached)
-            //{
-            //    this.DebugSettings.EnableFrameRateCounter = true;
-            //}
-#endif
-            
             Frame rootFrame = Window.Current.Content as Frame;
 
             // Do not repeat app initialization when the Window already has content,
@@ -85,16 +72,19 @@ namespace SimpleHomeAuto
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
                 rootFrame.Navigated += OnNavigated;
-                
+
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
 
-                SystemNavigationManager.GetForCurrentView().BackRequested += OnBackRequested;
-
-                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                var navMgr = SystemNavigationManager.GetForCurrentView();
+                navMgr.BackRequested += OnBackRequested;
+                navMgr.AppViewBackButtonVisibility =
                     rootFrame.CanGoBack ?
                     AppViewBackButtonVisibility.Visible :
                     AppViewBackButtonVisibility.Collapsed;
+
+                //var titlebar = ApplicationView.GetForCurrentView().TitleBar;
+                //titlebar.BackgroundColor = (Color)Resources["SystemColorWindowColor"];
             }
 
             Scenario scenario = null;

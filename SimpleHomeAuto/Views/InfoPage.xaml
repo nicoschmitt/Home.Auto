@@ -1,0 +1,38 @@
+﻿<Page
+    x:Class="SimpleHomeAuto.Views.InfoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SimpleHomeAuto.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="18,2,12,0" Height="80" 
+                        RequestedTheme="Dark" Grid.Row="0">
+            <TextBlock Text="INFO" VerticalAlignment="Center" FontSize="25" />
+        </Border>
+        <StackPanel Orientation="Vertical" Grid.Row="1">
+            <RichTextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" FontSize="20">
+                <Paragraph>
+                    This app allows you to define scenarios which call HTTP method to automate your home, like opening the garage or light of your lobby.
+                    <LineBreak />
+                    You can either launch scenarios through the UI or through Cortana, like "House, launch garage door".
+                    <LineBreak />
+                    <LineBreak />
+                    Send your (good) ideas for improvements at
+                    <Hyperlink NavigateUri="mailto:maso.app@outlook.com">maso.app@outlook.com</Hyperlink>
+                </Paragraph>
+            </RichTextBlock>
+        </StackPanel>
+        <Grid Grid.Row="2" Width="120" Height="120" Tapped="OnTapped" Background="Transparent">
+            <Path Data="F 1 M 352.163,163.115 L 198.919,9.871 C 188.47,-0.578 171.53,-0.578 161.081,9.871 L 7.837,163.115 C 0.185,170.767 -2.103,182.275 2.037,192.273 6.179,202.271 15.935,208.789 26.756,208.789 L 47.518,208.789 47.518,323.363 C 47.518,342.475 63.011,357.966 82.121,357.966 L 277.879,357.966 C 296.989,357.966 312.482,342.474 312.482,323.363 L 312.482,208.789 333.244,208.789 C 344.065,208.789 353.822,202.27 357.963,192.273 362.103,182.275 359.815,170.767 352.163,163.115 Z M 220.431,307.785 L 139.569,307.785 139.569,262.202 C 139.569,239.872 157.671,221.771 180,221.771 202.329,221.771 220.431,239.871 220.431,262.202 L 220.431,307.785 Z" 
+                  Fill="{ThemeResource SystemControlBackgroundAccentBrush}" Stretch="Uniform" />
+        </Grid>
+    </Grid>
+</Page>
