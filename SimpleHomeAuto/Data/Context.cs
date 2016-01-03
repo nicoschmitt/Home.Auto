@@ -29,8 +29,8 @@ namespace SimpleHomeAuto.Data
                 var pv = Package.Current.Id.Version;
                 Version version = new Version(Package.Current.Id.Version.Major,
                                               Package.Current.Id.Version.Minor,
-                                              Package.Current.Id.Version.Revision,
-                                              Package.Current.Id.Version.Build);
+                                              Package.Current.Id.Version.Build,
+                                              Package.Current.Id.Version.Revision);
 
                 return "v" + version.ToString();
             }

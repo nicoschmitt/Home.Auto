@@ -13,7 +13,8 @@ namespace SimpleHomeAuto
 {
     public sealed partial class ScenarioPage : Page
     {
-        Scenario scenario;
+        public Scenario Scenario { get; set; }
+        public bool IsNewOne { get; set; }
 
         public ScenarioPage()
         {
@@ -23,39 +24,40 @@ namespace SimpleHomeAuto
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
-            scenario = (e.Parameter as Scenario);
-            if (scenario == null)
+            Scenario = (e.Parameter as Scenario);
+            if (Scenario == null)
             {
                 // New Scenario
-                scenario = new Scenario();
-                SaveGrid.Visibility = Visibility.Visible;
-                ViewLaunch.Visibility = Visibility.Collapsed;
+                Scenario = new Scenario();
+                IsNewOne = true;
             } else
             {
                 // Edit existing
-                SaveGrid.Visibility = Visibility.Collapsed;
-                ViewLaunch.Visibility = Visibility.Visible;
+                IsNewOne = false;
             }
+
+            Title.Text = Scenario.Title ?? "";
+            Url.Text = Scenario.Url ?? "";
+            VoiceCommand.Text = Scenario.VoiceCommand ?? "";
         }
 
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
-            // Fix for binding not updating ?
-            scenario.Title = Title.Text;
-            scenario.Url = Url.Text;
-            scenario.VoiceCommand = VoiceCommand.Text;
+        //protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        //{
+        //    // Fix for binding not updating ?
+        //    scenario.Title = Title.Text;
+        //    scenario.Url = Url.Text;
+        //    scenario.VoiceCommand = VoiceCommand.Text;
 
-            Context.Instance.SaveSettings();
-        }
+        //    Context.Instance.SaveSettings();
+        //}
 
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
-            this.DataContext = scenario;
-
             // Pinning
-            if (!string.IsNullOrWhiteSpace(scenario.Title))
+            if (!string.IsNullOrWhiteSpace(Scenario.Title))
             {
-                if (SecondaryTile.Exists(scenario.Title)) PinToStart.IsOn = true;
+                var fixedtitle = Regex.Replace(Scenario.Title, @"\W", "-");
+                if (SecondaryTile.Exists(fixedtitle)) PinToStart.IsOn = true;
             }
         }
                 
@@ -63,7 +65,7 @@ namespace SimpleHomeAuto
         {
             try
             {
-                var fixedtitle = Regex.Replace(scenario.Title, @"\W", "-");
+                var fixedtitle = Regex.Replace(Scenario.Title, @"\W", "-");
                 if (PinToStart.IsOn)
                 {
                     if (string.IsNullOrWhiteSpace(fixedtitle))
@@ -74,8 +76,8 @@ namespace SimpleHomeAuto
                     {
                         Uri logo = new Uri(@"ms-appx:///Assets/Square150x150Logo.scale-200.png");
                         var tile = new SecondaryTile(fixedtitle,
-                                                     scenario.Title,
-                                                     scenario.Title,
+                                                     Scenario.Title,
+                                                     Scenario.Title,
                                                      logo,
                                                      TileSize.Default);
 
@@ -100,28 +102,29 @@ namespace SimpleHomeAuto
             }
         }
 
-        private void OnLaunch(object sender, RoutedEventArgs e)
-        {
-            if (!string.IsNullOrWhiteSpace(scenario.Url))
-            {
-                this.Frame.Navigate(typeof(ActionPage), scenario);
-            }
-        }
+        //private void OnLaunch(object sender, RoutedEventArgs e)
+        //{
+        //    if (!string.IsNullOrWhiteSpace(scenario.Url))
+        //    {
+        //        this.Frame.Navigate(typeof(ActionPage), scenario);
+        //    }
+        //}
 
-        private void OnSave(object sender, RoutedEventArgs e)
+        private async void OnSave(object sender, RoutedEventArgs e)
         {
-            // Fix for binding not updating ?
-            scenario.Title = Title.Text;
-            scenario.Url = Url.Text;
-            scenario.VoiceCommand = VoiceCommand.Text;
-
-            if (!string.IsNullOrWhiteSpace(scenario.Title) && !string.IsNullOrWhiteSpace(scenario.Url))
+            if (!string.IsNullOrWhiteSpace(Title.Text) && !string.IsNullOrWhiteSpace(Url.Text))
             {
-                Context.Instance.Scenarios.Add(scenario);
+                Scenario.Title = Title.Text;
+                Scenario.Url = Url.Text;
+                Scenario.VoiceCommand = VoiceCommand.Text;
+
+                if (IsNewOne) Context.Instance.Scenarios.Add(Scenario);
                 Context.Instance.SaveSettings();
-            }
 
-            this.Frame.Navigate(typeof(MainPage));
+                await VoiceService.UpdateAvailableScenarios();
+
+                this.Frame.Navigate(typeof(MainPage));
+            }
         }
 
         private void OnCancel(object sender, RoutedEventArgs e)

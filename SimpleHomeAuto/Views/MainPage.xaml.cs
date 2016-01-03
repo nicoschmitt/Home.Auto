@@ -31,7 +31,7 @@ namespace SimpleHomeAuto
             {
                 await VoiceService.InstallOrUpdateCortana();
             }
-            catch
+            catch(Exception ex)
             {
                 ViewMessage.Visibility = Visibility.Visible;
                 var loader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();

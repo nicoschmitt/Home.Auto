@@ -18,23 +18,18 @@
         </Border>
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Margin="20">
-                <TextBox x:Uid="ScenarioTitle" x:Name="Title" PlaceholderText="[en] scenario" Header="[EN] Title" Text="{Binding Title, Mode=TwoWay}" />
+                <TextBox x:Uid="ScenarioTitle" x:Name="Title" PlaceholderText="[en] scenario" Header="[EN] Title" />
             </StackPanel>
             <StackPanel Margin="20,0,20,20">
-                <TextBox x:Uid="ScnenarioVoice" x:Name="VoiceCommand" PlaceholderText="[en] open garage" Header="[en] Voice Command" Text="{Binding VoiceCommand, Mode=TwoWay}" />
+                <TextBox x:Uid="ScnenarioVoice" x:Name="VoiceCommand" PlaceholderText="[en] open garage" Header="[en] Voice Command" />
             </StackPanel>
             <StackPanel Margin="20,0,20,20">
-                <TextBox x:Uid="ScenarioUrl" x:Name="Url" PlaceholderText="http://home/action" Header="[en] Url to call" Text="{Binding Url, Mode=TwoWay}" />
+                <TextBox x:Uid="ScenarioUrl" x:Name="Url" PlaceholderText="http://home/action" Header="[en] Url to call" />
             </StackPanel>
             <StackPanel Margin="20,0,20,20">
                 <ToggleSwitch x:Uid="ScenarioPintoStart" x:Name="PinToStart" Header="[en] Pin to start" Toggled="OnPinToStart"></ToggleSwitch>
             </StackPanel>
-            <StackPanel x:Name="ViewLaunch" Margin="20,0,20,20">
-                <Button x:Uid="ScenarioLaunch" x:Name="Launch" Padding="10" HorizontalAlignment="Stretch" 
-                        Background="{ThemeResource SystemControlBackgroundAccentBrush}"  Foreground="{ThemeResource TextBoxBackgroundThemeBrush}" 
-                        Click="OnLaunch">[EN] Launch</Button>
-            </StackPanel>
-            <Grid Margin="20,0,20,20" x:Name="SaveGrid" Visibility="Visible">
+            <Grid Margin="20,0,20,20" x:Name="SaveGrid">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

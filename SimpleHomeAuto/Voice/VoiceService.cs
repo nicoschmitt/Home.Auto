@@ -12,6 +12,8 @@ namespace SimpleHomeAuto.Voice
 {
     public class VoiceService
     {
+        private static bool Installed = false;
+
         public static Scenario GetScenarioFromInput(VoiceCommandActivatedEventArgs commandArgs)
         {
             // Get the name of the voice command and the text spoken
@@ -19,19 +21,27 @@ namespace SimpleHomeAuto.Voice
             string textSpoken = commandArgs.Result.Text;
             Scenario scenario = null;
 
-            switch (voiceCommandName)
+            var name = commandArgs.Result.SemanticInterpretation.Properties["scenario"].FirstOrDefault();
+            if (name != null)
             {
-                case "scenarioScenario":
-                case "launchScenario":
-                    var name = commandArgs.Result.SemanticInterpretation.Properties["scenario"].FirstOrDefault();
-                    scenario = Context.Instance.Scenarios.FirstOrDefault(s => s.Title == name);
-                    break;
+                scenario = Context.Instance.Scenarios.FirstOrDefault(s => s.VoiceCommand == name);
             }
-
             return scenario;
         }
 
         public static async Task InstallOrUpdateCortana()
+        {
+            if (Installed) return;
+            
+            // Register Voice
+            var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Voice/VoiceCommands.xml"));
+            await VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
+
+            await UpdateAvailableScenarios();
+            Installed = true;
+        }
+
+        public static async Task UpdateAvailableScenarios()
         {
             var countryCode = CultureInfo.CurrentCulture.Name.ToLower();
             if (string.IsNullOrWhiteSpace(countryCode))
@@ -43,15 +53,10 @@ namespace SimpleHomeAuto.Voice
                 countryCode = countryCode.Substring(0, 2);
             }
 
-            // Register Voice
-            var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Voice/VoiceCommands.xml"));
-            await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
-
             // Register scenario name for recognition
             var scenarios = Context.Instance.Scenarios;
             if (scenarios.Count > 0)
             {
-
                 var setName = "HomeCommandSet_" + countryCode;
                 var defs = VoiceCommandDefinitionManager.InstalledCommandDefinitions;
 
@@ -62,6 +67,7 @@ namespace SimpleHomeAuto.Voice
                     await commands.SetPhraseListAsync("scenario", phraselist);
                 }
             }
+
         }
     }
 }

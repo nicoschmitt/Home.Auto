@@ -8,14 +8,22 @@
 
     <Command Name="launchScenario">
       <Example> lance [scénario] </Example>
-      <ListenFor> lance {scenario} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> lance {scenario} </ListenFor>
       <Feedback> Lancement {scenario} </Feedback>
       <Navigate/>
     </Command>
 
     <Command Name="scenarioScenario">
       <Example> scénario [scenario] </Example>
-      <ListenFor> scénario {scenario} </ListenFor>
+      <ListenFor RequireAppName="BeforeOrAfterPhrase"> scénario {scenario} </ListenFor>
+      <Feedback> Lancement {scenario} </Feedback>
+      <Navigate/>
+    </Command>
+
+    <Command Name="naturalScenario">
+      <Example> [scenario] dans ma maison </Example>
+      <ListenFor RequireAppName="AfterPhrase"> {scenario} dans ma {builtin:AppName} </ListenFor>
+      <ListenFor RequireAppName="AfterPhrase"> {scenario} de ma {builtin:AppName} </ListenFor>
       <Feedback> Lancement {scenario} </Feedback>
       <Navigate/>
     </Command>
@@ -26,7 +34,7 @@
     
   </CommandSet>
 
-  <CommandSet xml:lang="en" Name="HomeCommandSet_en">
+  <!--<CommandSet xml:lang="en" Name="HomeCommandSet_en">
 
     <AppName> House </AppName>
     <Example> launch [scenario] </Example>
@@ -49,6 +57,6 @@
 
     </PhraseList>
 
-  </CommandSet>
+  </CommandSet>-->
 
 </VoiceCommands>
