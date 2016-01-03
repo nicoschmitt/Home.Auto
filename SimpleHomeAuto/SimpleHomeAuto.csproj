@@ -98,7 +98,7 @@
     </Content>
     <Content Include="Assets\square.24x24.png" />
     <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
-    <Content Include="VoiceCommands.xml">
+    <Content Include="Voice\VoiceCommands.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <SubType>Designer</SubType>
     </Content>

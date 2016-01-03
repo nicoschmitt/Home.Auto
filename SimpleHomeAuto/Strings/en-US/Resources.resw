@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CortanaNotFound" xml:space="preserve">
+    <value>Unable to register Cortana. Is she activated?</value>
+  </data>
   <data name="InfoExample.Text" xml:space="preserve">
     <value>You can either launch scenarios through the UI or through Cortana, like "House, launch garage door" or "House, scenario bedroom lights".</value>
   </data>

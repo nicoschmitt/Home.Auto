@@ -1,6 +1,7 @@
 ﻿using SimpleHomeAuto.Data;
 using SimpleHomeAuto.Voice;
 using System;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.UI.StartScreen;
 using Windows.UI.Xaml;
@@ -62,16 +63,17 @@ namespace SimpleHomeAuto
         {
             try
             {
+                var fixedtitle = Regex.Replace(scenario.Title, @"\W", "-");
                 if (PinToStart.IsOn)
                 {
-                    if (string.IsNullOrWhiteSpace(scenario.Title))
+                    if (string.IsNullOrWhiteSpace(fixedtitle))
                     {
                         PinToStart.IsOn = false;
                     }
-                    else if (!SecondaryTile.Exists(scenario.Title))
+                    else if (!SecondaryTile.Exists(fixedtitle))
                     {
                         Uri logo = new Uri(@"ms-appx:///Assets/Square150x150Logo.scale-200.png");
-                        var tile = new SecondaryTile(scenario.Title,
+                        var tile = new SecondaryTile(fixedtitle,
                                                      scenario.Title,
                                                      scenario.Title,
                                                      logo,
@@ -80,11 +82,11 @@ namespace SimpleHomeAuto
                         await tile.RequestCreateForSelectionAsync(GetElementRect((FrameworkElement)sender));
                     }
                 }
-                else if (!string.IsNullOrWhiteSpace(scenario.Title))
+                else if (!string.IsNullOrWhiteSpace(fixedtitle))
                 {
-                    if (SecondaryTile.Exists(scenario.Title))
+                    if (SecondaryTile.Exists(fixedtitle))
                     {
-                        SecondaryTile secondaryTile = new SecondaryTile(scenario.Title);
+                        SecondaryTile secondaryTile = new SecondaryTile(fixedtitle);
                         Windows.Foundation.Rect rect = GetElementRect((FrameworkElement)sender);
                         Windows.UI.Popups.Placement placement = Windows.UI.Popups.Placement.Above;
                         bool isUnpinned = await secondaryTile.RequestDeleteForSelectionAsync(rect, placement);

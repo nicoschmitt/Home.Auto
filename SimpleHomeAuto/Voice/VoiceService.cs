@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using SimpleHomeAuto.Data;
 using Windows.ApplicationModel.Activation;
+using System.Globalization;
+using Windows.ApplicationModel.VoiceCommands;
 
 namespace SimpleHomeAuto.Voice
 {
@@ -31,28 +33,34 @@ namespace SimpleHomeAuto.Voice
 
         public static async Task InstallOrUpdateCortana()
         {
+            var countryCode = CultureInfo.CurrentCulture.Name.ToLower();
+            if (string.IsNullOrWhiteSpace(countryCode))
+            {
+                countryCode = "en";
+            }
+            else
+            {
+                countryCode = countryCode.Substring(0, 2);
+            }
+
             // Register Voice
-            var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///VoiceCommands.xml"));
+            var storageFile = await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Voice/VoiceCommands.xml"));
             await Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync(storageFile);
 
+            // Register scenario name for recognition
             var scenarios = Context.Instance.Scenarios;
             if (scenarios.Count > 0)
             {
-                var setName = "HomeCommandSet_";
-                var defs = Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstalledCommandDefinitions;
-                foreach (var set in defs)
-                {
-                    if (set.Key.StartsWith(setName))
-                    {
-                        var commands = set.Value;
-                        await commands.SetPhraseListAsync("scenario", scenarios.Select(s => s.Title).ToArray());
-                    }
 
+                var setName = "HomeCommandSet_" + countryCode;
+                var defs = VoiceCommandDefinitionManager.InstalledCommandDefinitions;
+
+                VoiceCommandDefinition commands;
+                if (defs.TryGetValue(setName, out commands))
+                {
+                    var phraselist = scenarios.Select(s => s.VoiceCommand).ToArray();
+                    await commands.SetPhraseListAsync("scenario", phraselist);
                 }
-                //if (Windows.ApplicationModel.VoiceCommands.VoiceCommandDefinitionManager.InstalledCommandDefinitions.TryGetValue("HomeCommandSet_fr-fr", out commands))
-                //{
-                //    await commands.SetPhraseListAsync("scenario", scenarios.Select(s => s.Title).ToArray());
-                //}
             }
         }
     }

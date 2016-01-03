@@ -1,21 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.2">
   
-  <CommandSet xml:lang="fr-fr" Name="HomeCommandSet_fr-fr">
+  <CommandSet xml:lang="fr" Name="HomeCommandSet_fr">
     
     <AppName> Maison </AppName>
-    <Example> lance [scenario] </Example>
+    <Example> lance [scénario] </Example>
 
     <Command Name="launchScenario">
-      <Example> lance [scenario] </Example>
+      <Example> lance [scénario] </Example>
       <ListenFor> lance {scenario} </ListenFor>
       <Feedback> Lancement {scenario} </Feedback>
       <Navigate/>
     </Command>
 
     <Command Name="scenarioScenario">
-      <Example> scenario [scenario] </Example>
-      <ListenFor> scenario {scenario} </ListenFor>
+      <Example> scénario [scenario] </Example>
+      <ListenFor> scénario {scenario} </ListenFor>
       <Feedback> Lancement {scenario} </Feedback>
       <Navigate/>
     </Command>
@@ -26,7 +26,7 @@
     
   </CommandSet>
 
-  <CommandSet xml:lang="en-us" Name="HomeCommandSet_en-us">
+  <CommandSet xml:lang="en" Name="HomeCommandSet_en">
 
     <AppName> House </AppName>
     <Example> launch [scenario] </Example>

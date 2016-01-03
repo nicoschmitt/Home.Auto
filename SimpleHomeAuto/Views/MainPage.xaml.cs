@@ -4,6 +4,7 @@ using SimpleHomeAuto.Voice;
 using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Resources;
 using Windows.Foundation;
 using Windows.UI.StartScreen;
 using Windows.UI.ViewManagement;
@@ -25,7 +26,7 @@ namespace SimpleHomeAuto
             var context = Context.Instance;
             context.LoadSettings();
             ListScenarios.ItemsSource = context.Scenarios;
-            
+
             try
             {
                 await VoiceService.InstallOrUpdateCortana();
@@ -33,7 +34,8 @@ namespace SimpleHomeAuto
             catch
             {
                 ViewMessage.Visibility = Visibility.Visible;
-                Message.Text = "Unable to register Cortana. Is she activated?";
+                var loader = Windows.ApplicationModel.Resources.ResourceLoader.GetForCurrentView();
+                Message.Text = loader.GetString("CortanaNotFound");
             }
         }
         

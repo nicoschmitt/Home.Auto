@@ -5,6 +5,7 @@
     xmlns:local="using:SimpleHomeAuto.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Background="{ThemeResource SystemControlBackgroundAccentBrush}"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -21,7 +22,7 @@
             </StackPanel>
         </Border>
         <StackPanel Orientation="Vertical" Grid.Row="1">
-            <RichTextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" FontSize="18">
+            <RichTextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" FontSize="17">
                 <Paragraph>
                     <Run x:Uid="InfoIntro" Text="This app allows you to define scenarios which call HTTP method to automate your home, like opening the garage or light of your lobby." />
                     <LineBreak />

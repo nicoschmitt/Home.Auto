@@ -16,7 +16,7 @@
             <RowDefinition Height="80" />
             <RowDefinition Height="*" />
             <RowDefinition Height="80" />
-            <RowDefinition Height="40" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="5,2,0,0" Height="80" 
                     Grid.Row="0" RequestedTheme="Dark" >
