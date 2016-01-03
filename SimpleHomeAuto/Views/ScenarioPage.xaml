@@ -13,9 +13,8 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="18,2,12,0" Height="80" 
-                        RequestedTheme="Dark" Grid.Row="0">
-            <TextBlock x:Uid="ScenarioPageTitle" Text="[EN] SCENARIO DETAIL" VerticalAlignment="Center" FontSize="25" />
+        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="18,2,12,0" Height="80" Grid.Row="0">
+            <TextBlock x:Uid="ScenarioPageTitle" Text="[EN] SCENARIO DETAIL" VerticalAlignment="Center" FontSize="25"  Foreground="{ThemeResource TextBoxBackgroundThemeBrush}"  />
         </Border>
         <StackPanel Orientation="Vertical" Grid.Row="1">
             <StackPanel Margin="20">
@@ -32,7 +31,7 @@
             </StackPanel>
             <StackPanel x:Name="ViewLaunch" Margin="20,0,20,20">
                 <Button x:Uid="ScenarioLaunch" x:Name="Launch" Padding="10" HorizontalAlignment="Stretch" 
-                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="White"
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}"  Foreground="{ThemeResource TextBoxBackgroundThemeBrush}" 
                         Click="OnLaunch">[EN] Launch</Button>
             </StackPanel>
             <Grid Margin="20,0,20,20" x:Name="SaveGrid" Visibility="Visible">
@@ -42,13 +41,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button x:Uid="ScenarioSave" Grid.Column="0" Padding="10" HorizontalAlignment="Stretch" 
-                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="White"
-                        Margin="0,0,10,0"
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" 
+                        Margin="0,0,10,0" Foreground="{ThemeResource TextBoxBackgroundThemeBrush}" 
                         Click="OnSave">[EN] Save</Button>
 
                 <Button x:Uid="ScenarioCancel" Grid.Column="1" Padding="10" HorizontalAlignment="Stretch" 
-                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" Foreground="White"
-                        Margin="10,0,0,0"
+                        Background="{ThemeResource SystemControlBackgroundAccentBrush}" 
+                        Margin="10,0,0,0" Foreground="{ThemeResource TextBoxBackgroundThemeBrush}" 
                         Click="OnCancel">[EN] Cancel</Button>
             </Grid>
         </StackPanel>

@@ -1,2 +1,2 @@
-MainPackage=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\bin\x86\Release\Upload\SimpleHomeAuto_1.3.2.0_x86.appx
-SymbolPackage=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\AppPackages\SimpleHomeAuto_1.3.2.0\SimpleHomeAuto_1.3.2.0_x86.appxsym
+MainPackage=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\bin\x86\Release\Upload\SimpleHomeAuto_1.3.5.0_x86.appx
+SymbolPackage=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\AppPackages\SimpleHomeAuto_1.3.5.0\SimpleHomeAuto_1.3.5.0_x86.appxsym

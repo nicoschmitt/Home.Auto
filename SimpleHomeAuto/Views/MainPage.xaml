@@ -18,8 +18,7 @@
             <RowDefinition Height="80" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="5,2,0,0" Height="80" 
-                    Grid.Row="0" RequestedTheme="Dark" >
+        <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="5,2,0,0" Height="80" Grid.Row="0">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />
@@ -27,7 +26,7 @@
                     <ColumnDefinition Width="75" />
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0" Source="/Assets/Square150x150Logo.png" NineGrid="0,0,10,0" />
-                <TextBlock Text="HOME AUTO" VerticalAlignment="Center" FontSize="25" Grid.Column="1" />
+                <TextBlock Text="HOME AUTO" VerticalAlignment="Center" FontSize="25" Grid.Column="1" Foreground="{ThemeResource TextBoxBackgroundThemeBrush}" />
                 <Button Grid.Column="2" HorizontalAlignment="Right" Background="Transparent" Margin="0,0,9,0" Click="OnInfo">
                     <Button.Content>
                         <Path Width="38" Height="38" Canvas.Left="19" Canvas.Top="19" Stretch="Fill" Fill="White" 

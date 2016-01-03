@@ -115,8 +115,11 @@ namespace SimpleHomeAuto
             scenario.Url = Url.Text;
             scenario.VoiceCommand = VoiceCommand.Text;
 
-            Context.Instance.Scenarios.Add(scenario);
-            Context.Instance.SaveSettings();
+            if (!string.IsNullOrWhiteSpace(scenario.Title) && !string.IsNullOrWhiteSpace(scenario.Url))
+            {
+                Context.Instance.Scenarios.Add(scenario);
+                Context.Instance.SaveSettings();
+            }
 
             this.Frame.Navigate(typeof(MainPage));
         }
