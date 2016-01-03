@@ -1,3 +1,3 @@
-MainPackage=C:\Users\nicolass\documents\visual studio 2015\Projects\SimpleHomeAuto\SimpleHomeAuto\bin\ARM\Release\Upload\SimpleHomeAuto_1.2.5.0_ARM.appx
-SymbolPackage=C:\Users\nicolass\documents\visual studio 2015\Projects\SimpleHomeAuto\SimpleHomeAuto\AppPackages\SimpleHomeAuto_1.2.5.0\SimpleHomeAuto_1.2.5.0_ARM.appxsym
-ResourcePack=C:\Users\nicolass\documents\visual studio 2015\Projects\SimpleHomeAuto\SimpleHomeAuto\_language-en.appx
+MainPackage=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\bin\ARM\Release\Upload\SimpleHomeAuto_1.3.0.0_ARM.appx
+SymbolPackage=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\AppPackages\SimpleHomeAuto_1.3.0.0\SimpleHomeAuto_1.3.0.0_ARM.appxsym
+ResourcePack=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\_language-en.appx

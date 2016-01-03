@@ -25,9 +25,7 @@ namespace SimpleHomeAuto
             var context = Context.Instance;
             context.LoadSettings();
             ListScenarios.ItemsSource = context.Scenarios;
-
-            Version.Text = Context.Instance.Version;
-
+            
             try
             {
                 await VoiceService.InstallOrUpdateCortana();

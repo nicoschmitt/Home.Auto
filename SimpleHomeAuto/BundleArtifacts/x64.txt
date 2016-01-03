@@ -1,2 +1,2 @@
-MainPackage=C:\Users\nicolass\documents\visual studio 2015\Projects\SimpleHomeAuto\SimpleHomeAuto\bin\x64\Release\SimpleHomeAuto_1.2.5.0_x64.appx
-SymbolPackage=C:\Users\nicolass\documents\visual studio 2015\Projects\SimpleHomeAuto\SimpleHomeAuto\AppPackages\SimpleHomeAuto_1.2.5.0_Test\SimpleHomeAuto_1.2.5.0_x64.appxsym
+MainPackage=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\bin\x64\Release\SimpleHomeAuto_1.3.0.0_x64.appx
+SymbolPackage=C:\Users\nicolass\Source\Repos\Home.Auto\SimpleHomeAuto\AppPackages\SimpleHomeAuto_1.3.0.0_Test\SimpleHomeAuto_1.3.0.0_x64.appxsym

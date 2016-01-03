@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleHomeAuto.Data;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace SimpleHomeAuto.Views
         public InfoPage()
         {
             this.InitializeComponent();
+            Version.Text = Context.Instance.Version;
         }
 
         private void OnTapped(object sender, TappedRoutedEventArgs e)

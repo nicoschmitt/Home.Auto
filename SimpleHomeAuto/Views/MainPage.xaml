@@ -27,10 +27,7 @@
                     <ColumnDefinition Width="75" />
                 </Grid.ColumnDefinitions>
                 <Image Grid.Column="0" Source="/Assets/Square150x150Logo.png" NineGrid="0,0,10,0" />
-                <StackPanel Grid.Column="1" VerticalAlignment="Center" Orientation="Vertical">
-                    <TextBlock Text="HOME AUTO" VerticalAlignment="Center" FontSize="25" />
-                    <TextBlock x:Name="Version" Text="v1.0.0" VerticalAlignment="Center" FontSize="15" />
-                </StackPanel>
+                <TextBlock Text="HOME AUTO" VerticalAlignment="Center" FontSize="25" Grid.Column="1" />
                 <Button Grid.Column="2" HorizontalAlignment="Right" Background="Transparent" Margin="0,0,9,0" Click="OnInfo">
                     <Button.Content>
                         <Path Width="38" Height="38" Canvas.Left="19" Canvas.Top="19" Stretch="Fill" Fill="White" 
@@ -72,14 +69,14 @@
                                 </Grid.ColumnDefinitions>
 
                                 <TextBlock Text="{Binding Title}"
-                                           FontSize="18" 
+                                           FontSize="19" 
                                            Style="{ThemeResource SubtitleTextBlockStyle}"
                                            TextWrapping="NoWrap" 
                                            TextTrimming="CharacterEllipsis" 
                                            Grid.Row="0" Grid.Column="0"/>
 
                                 <TextBlock Text="{Binding Url}" 
-                                           FontSize="13" 
+                                           FontSize="14" 
                                            Foreground="{ThemeResource SystemControlDisabledChromeDisabledLowBrush}" 
                                            TextWrapping="NoWrap" 
                                            TextTrimming="CharacterEllipsis"

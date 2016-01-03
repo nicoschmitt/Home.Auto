@@ -15,17 +15,20 @@
         </Grid.RowDefinitions>
         <Border Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="18,2,12,0" Height="80" 
                         RequestedTheme="Dark" Grid.Row="0">
-            <TextBlock Text="INFO" VerticalAlignment="Center" FontSize="25" />
+            <StackPanel Orientation="Horizontal">
+               <TextBlock Text="INFO" VerticalAlignment="Center" FontSize="25" />
+               <TextBlock x:Name="Version" Text="v1.0.0" VerticalAlignment="Center" FontSize="20" Margin="10,0,0,0" />
+            </StackPanel>
         </Border>
         <StackPanel Orientation="Vertical" Grid.Row="1">
-            <RichTextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" FontSize="20">
+            <RichTextBlock HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10" FontSize="18">
                 <Paragraph>
-                    This app allows you to define scenarios which call HTTP method to automate your home, like opening the garage or light of your lobby.
+                    <Run x:Uid="InfoIntro" Text="This app allows you to define scenarios which call HTTP method to automate your home, like opening the garage or light of your lobby." />
                     <LineBreak />
-                    You can either launch scenarios through the UI or through Cortana, like "House, launch garage door".
+                    <Run x:Uid="InfoExample" Text="You can either launch scenarios through the UI or through Cortana, like 'House, launch garage door'." />
                     <LineBreak />
                     <LineBreak />
-                    Send your (good) ideas for improvements at
+                    <Run x:Uid="InfoMail" Text="Send your (good) ideas for improvements at " />
                     <Hyperlink NavigateUri="mailto:maso.app@outlook.com">maso.app@outlook.com</Hyperlink>
                 </Paragraph>
             </RichTextBlock>
